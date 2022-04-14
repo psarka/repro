@@ -1,0 +1,7 @@
+[requires]
+    fmt/6.2.1
+    zmqpp/4.2.0
+
+[generators]
+    virtualenv
+    cmake_find_package
