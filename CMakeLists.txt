@@ -9,5 +9,5 @@ find_package(fmt REQUIRED)
 add_executable(repro src/main.cpp)
 target_link_libraries(repro fmt::fmt)
 
-set_target_properties(repro PROPERTIES SUFFIX ".html" LINK_FLAGS "--emrun -lembind")
+set_target_properties(repro PROPERTIES SUFFIX ".html" LINK_FLAGS "--emrun --bind")
 file(COPY src/index.html DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
