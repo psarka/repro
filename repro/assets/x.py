@@ -1,17 +1,9 @@
-import warnings
-
-warnings.simplefilter('ignore')
-from dagster import MultiPartitionsDefinition
-from dagster import StaticPartitionsDefinition
-from dagster import asset
+from dagster import StaticPartitionsDefinition, asset
 
 
 @asset(
     name='x',
-    partitions_def=MultiPartitionsDefinition({
-        'x': StaticPartitionsDefinition(['1']),
-        'y': StaticPartitionsDefinition(['A'])
-    })
+    partitions_def=StaticPartitionsDefinition(['1', '2', '3'])
 )
 def _() -> str:
     return 'hi'

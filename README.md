@@ -1,23 +1,12 @@
-# Experimental Warning Repro
-
-## Linux
+# Dependency on downstream repro
 
 Install:
 
-    pip install dagster==1.1.21 dagit
+    pip install dagster==1.2.4 dagit
 
 run:
 
     dagster dev
 
-## Windows
 
-    mamba install "dagster==1.1.21" dagit
-
-run:
-
-    PYTHONLEGACYWINDOWSSTDIO=utf8 dagster dev
-
-## Repro
-
-Click "refresh assets" button in the UI.
+Click Asset X and try to materialize multiple partitions.
