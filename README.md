@@ -2,11 +2,11 @@
 
 Install:
 
-    pip install dagster==1.2.4 dagit
+    pip install dagster==1.3.0 dagit
 
 run:
 
     dagster dev
 
 
-Click Asset X and try to materialize multiple partitions.
+Click Asset X and try to select partition number 100.
