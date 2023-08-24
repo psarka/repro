@@ -1,4 +1,4 @@
-# Time window partition automaterialization repro
+# Stalling daemon when cancelling a large backfill
 
 Install:
 
@@ -8,4 +8,4 @@ run:
 
     dagster dev
 
-Enable automaterialization in the UI.
+Backfill all partitions of asset `x`, then cancel the backfill.
