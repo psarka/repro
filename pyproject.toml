@@ -4,3 +4,6 @@ build-backend = "setuptools.build_meta"
 
 [tool.dagster]
 module_name = "repro"
+
+[tool.black]
+line_length = 100

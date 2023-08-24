@@ -1,17 +1,9 @@
-import warnings
-
-warnings.simplefilter('ignore')
-from dagster import MultiPartitionsDefinition
-from dagster import StaticPartitionsDefinition
-from dagster import asset
+from dagster import AutoMaterializePolicy, asset
 
 
 @asset(
     name='x',
-    partitions_def=MultiPartitionsDefinition({
-        'x': StaticPartitionsDefinition(['1']),
-        'y': StaticPartitionsDefinition(['A'])
-    })
+    auto_materialize_policy=AutoMaterializePolicy.eager(1000),
 )
-def _() -> str:
+def x() -> str:
     return 'hi'

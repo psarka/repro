@@ -1,23 +1,11 @@
-# Experimental Warning Repro
-
-## Linux
+# Time window partition automaterialization repro
 
 Install:
 
-    pip install dagster==1.1.21 dagit
+    pip install dagster==1.4.7 dagster-webserver
 
 run:
 
     dagster dev
 
-## Windows
-
-    mamba install "dagster==1.1.21" dagit
-
-run:
-
-    PYTHONLEGACYWINDOWSSTDIO=utf8 dagster dev
-
-## Repro
-
-Click "refresh assets" button in the UI.
+Enable automaterialization in the UI.
