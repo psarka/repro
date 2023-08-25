@@ -1,11 +1,13 @@
-# Time window partition automaterialization repro
+# Automaterialization run crash repro
 
 Install:
 
-    pip install dagster==1.4.7 dagster-webserver
+    pip install dagster==1.4.9 dagster-webserver==1.4.9
 
 run:
 
     dagster dev
 
-Enable automaterialization in the UI.
+1. Enable automaterialization in the UI.
+2. When first run (for asset x_1) is complete, uncomment the second pair of assets and save the file.
+3. Observe failed run for asset y_1.
