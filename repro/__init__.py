@@ -1,6 +1,5 @@
 from dagster import Definitions
-from dagster import load_assets_from_package_module
 
-from repro import assets
+from repro.assets import xy
 
-defs = Definitions(assets=load_assets_from_package_module(assets))
+defs = Definitions(assets=xy.assets)
