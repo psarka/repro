@@ -10,108 +10,55 @@ from dagster import (
 
 
 @asset(
-    partitions_def=DailyPartitionsDefinition(start_date="2023-08-01"),
-    auto_materialize_policy=AutoMaterializePolicy.eager(1),
+    partitions_def=DailyPartitionsDefinition(start_date="2023-09-20"),
+    auto_materialize_policy=AutoMaterializePolicy.eager(3),
 )
-def no_deps_eager_1() -> None:
+def no_deps_eager_3() -> None:
     print('hi')
 
 
 @asset(
-    partitions_def=DailyPartitionsDefinition(start_date="2023-08-01"),
-    auto_materialize_policy=AutoMaterializePolicy.eager(100),
-)
-def no_deps_eager_100() -> None:
-    print('hi')
-
-
-@asset(
-    partitions_def=DailyPartitionsDefinition(start_date="2023-08-01"),
-    auto_materialize_policy=AutoMaterializePolicy.eager(1),
+    partitions_def=DailyPartitionsDefinition(start_date="2023-09-20"),
+    auto_materialize_policy=AutoMaterializePolicy.eager(3),
     ins={
-        "self_dep_eager_1": AssetIn(
-            key=AssetKey("self_dep_eager_1"),
+        "self_dep_eager_3": AssetIn(
+            key=AssetKey("self_dep_eager_3"),
             partition_mapping=TimeWindowPartitionMapping(start_offset=-1, end_offset=-1),
             dagster_type=Nothing,
         ),
     },
 )
-def self_dep_eager_1() -> None:
+def self_dep_eager_3() -> None:
     print('hi')
 
 
 @asset(
-    partitions_def=DailyPartitionsDefinition(start_date="2023-08-01"),
-    auto_materialize_policy=AutoMaterializePolicy.eager(100),
-    ins={
-        "self_dep_eager_100": AssetIn(
-            key=AssetKey("self_dep_eager_100"),
-            partition_mapping=TimeWindowPartitionMapping(start_offset=-1, end_offset=-1),
-            dagster_type=Nothing,
-        ),
-    },
-)
-def self_dep_eager_100() -> None:
-    print('hi')
-
-
-@asset(
-    partitions_def=DailyPartitionsDefinition(start_date="2023-08-01"),
-    auto_materialize_policy=AutoMaterializePolicy.eager(1),
+    partitions_def=DailyPartitionsDefinition(start_date="2023-09-20"),
+    auto_materialize_policy=AutoMaterializePolicy.eager(3),
     ins={
         "x": AssetIn(
             key=AssetKey("x"),
         ),
     },
 )
-def upstream_dep_eager_1(x: str) -> None:
+def upstream_dep_eager_3(x: str) -> None:
     print(x)
 
 
 @asset(
-    partitions_def=DailyPartitionsDefinition(start_date="2023-08-01"),
-    auto_materialize_policy=AutoMaterializePolicy.eager(100),
+    partitions_def=DailyPartitionsDefinition(start_date="2023-09-20"),
+    auto_materialize_policy=AutoMaterializePolicy.eager(3),
     ins={
         "x": AssetIn(
             key=AssetKey("x"),
         ),
-    },
-)
-def upstream_dep_eager_100(x: str) -> None:
-    print(x)
-
-
-@asset(
-    partitions_def=DailyPartitionsDefinition(start_date="2023-08-01"),
-    auto_materialize_policy=AutoMaterializePolicy.eager(1),
-    ins={
-        "x": AssetIn(
-            key=AssetKey("x"),
-        ),
-        "self_dep_upstream_dep_eager_1": AssetIn(
-            key=AssetKey("self_dep_upstream_dep_eager_1"),
+        "self_dep_upstream_dep_eager_3": AssetIn(
+            key=AssetKey("self_dep_upstream_dep_eager_3"),
             partition_mapping=TimeWindowPartitionMapping(start_offset=-1, end_offset=-1),
             dagster_type=Nothing,
         ),
     },
 )
-def self_dep_upstream_dep_eager_1(x: str) -> None:
+def self_dep_upstream_dep_eager_3(x: str) -> None:
     print(x)
 
-
-@asset(
-    partitions_def=DailyPartitionsDefinition(start_date="2023-08-01"),
-    auto_materialize_policy=AutoMaterializePolicy.eager(100),
-    ins={
-        "x": AssetIn(
-            key=AssetKey("x"),
-        ),
-        "self_dep_upstream_dep_eager_100": AssetIn(
-            key=AssetKey("self_dep_upstream_dep_eager_100"),
-            partition_mapping=TimeWindowPartitionMapping(start_offset=-1, end_offset=-1),
-            dagster_type=Nothing,
-        ),
-    },
-)
-def self_dep_upstream_dep_eager_100(x: str) -> None:
-    print(x)

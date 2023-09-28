@@ -2,7 +2,7 @@
 
 Install:
 
-    pip install dagster==1.4.7 dagster-webserver
+    pip install dagster dagster-webserver
 
 run:
 
